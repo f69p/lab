@@ -19,6 +19,7 @@ public class EmployeeManager {
         }
 
 
+         
         // Check arguments
         if (args[0].equals("l")) {
             System.out.println("Loading data ...");
@@ -137,4 +138,20 @@ public class EmployeeManager {
             System.out.println("Data Deleted.");
         }
     }
+
+    @SuppressWarnings("unused")
+    private static String readFromFile() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")))) {
+            return reader.readLine();
+        }
+    }
+
+
+    @SuppressWarnings("unused")
+    private static void writeToFile(String data, boolean append) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("employees.txt", append))) {
+            writer.write(data);
+        }
+    }
 }
+       
